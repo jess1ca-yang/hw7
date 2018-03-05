@@ -157,6 +157,7 @@ function keyPressed() {
     p2Score = 0;
     puck.xSpeed = 3;
     puck.ySpeed = -1;
+    textPlay = '';
   }
 
 
