@@ -33,6 +33,14 @@ var p2Score = 0;
 function draw() {
   background("black");
   textSize(32);
+  
+  //draw net
+ 	var ySquare = 0;
+  while (ySquare < 400) {
+  rect(200, ySquare, 5, 10); 
+  ySquare = ySquare + 20;
+	
+  }  
   fill("white");
   //draw p1 score
   text(p1Score, 100, 100);
@@ -42,21 +50,26 @@ function draw() {
   }
   //draw p2 score
   text(p2Score, 300, 100);
+
   if (puck.x == -10) {
   p2Score = p2Score + 1;
   text(p2Score, 300, 100);
   }
-  if (p2Score == 10) {
-  text('Game', 10, 100);
-  text('Over', 10, 100);
+
+  if (p2Score || p1Score == 10) {
+
+  fill("black")
+  p1Score = 'GAME';
+  p2Score = 'OVER!';
+  textAlign(CENTER);
+  puck.x = 410;
+  puck.y = 200;
+  fill("white");
+  textSize(20);
+	text('Press space to play again', 200, 200);
+  fill("black");
   }
-	//draw net
- 	var ySquare = 0;
-  while (ySquare < 400) {
-  rect(200, ySquare, 5, 10); 
-  ySquare = ySquare + 20;
 	
-  }   
   // draw puck
   ellipse(puck.x, puck.y, puck.r*2);
 
@@ -129,6 +142,13 @@ function keyPressed() {
   } else if (keyCode == UP_ARROW) {
     player2.paddleUp = true;
   }
+  if (keyCode == '32') {
+    fill("white");
+    p1Score = 0;
+    p2Score = 0;
+  }
+    
+    
 }
 
 function keyReleased() {
